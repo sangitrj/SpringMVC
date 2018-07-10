@@ -1,6 +1,9 @@
 package com.example.dto;
 
+import javax.validation.constraints.Size;
+
 public class Login {
+	@Size(min=5, max=10)
 	private String name;
 	private Integer password;
 	

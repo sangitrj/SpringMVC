@@ -2,6 +2,7 @@ package com.example;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -15,7 +16,7 @@ import com.example.dto.Login;
 @Controller
 public class HelloWorldController {
 	@RequestMapping(value="/home", method=RequestMethod.POST)
-	public ModelAndView helloWorld(HttpServletRequest request, HttpServletResponse response,@ModelAttribute Login login, BindingResult result){
+	public ModelAndView helloWorld(HttpServletRequest request, HttpServletResponse response,@Valid @ModelAttribute Login login, BindingResult result){
 		
 		if(result.hasErrors()){
 			return new ModelAndView("index").addObject("message", result.getFieldError().getDefaultMessage());
