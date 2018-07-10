@@ -22,7 +22,7 @@ public class HelloWorldController {
 		}
 		if(!login.getName().startsWith("user"))
 			return new ModelAndView("index").addObject("message", "Invalid User name or Password");
-		request.getSession().setAttribute("name",login.getPassword());
+		request.getSession().setAttribute("name",login.getName());
 		ModelAndView model = new ModelAndView("hellopage");
 		return model;
 	}
