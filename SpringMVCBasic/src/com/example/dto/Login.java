@@ -2,7 +2,7 @@ package com.example.dto;
 
 public class Login {
 	private String name;
-	private String password;
+	private Integer password;
 	
 	public String getName() {
 		return name;
@@ -10,10 +10,10 @@ public class Login {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPassword() {
+	public Integer getPassword() {
 		return password;
 	}
-	public void setPassword(String password) {
+	public void setPassword(Integer password) {
 		this.password = password;
 	}
 	

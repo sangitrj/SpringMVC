@@ -6,9 +6,10 @@
       <title>spring</title>
    </head>
    <body>
-   welcome : ${login.name}
-     <form action="detail" method="get">
-   		<input type="submit" value="get details">
+   	<form action="home" method="post">
+   		<input type="text" placeholder="User name" name="name"><br><br>
+   		<input type="text" placeholder="Password" name="password"><br><br>
+   		<input type="submit" value="login">  <font style="color: red;"> ${message} </font>
    	</form>
    </body>
 </html>
