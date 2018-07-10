@@ -6,6 +6,8 @@ import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,17 +17,19 @@ import com.example.dto.Login;
 
 @Controller
 public class HelloWorldController {
+	@InitBinder
+	public void initBinder(WebDataBinder binder){
+		
+	}
+	
 	@RequestMapping(value="/home", method=RequestMethod.POST)
 	public ModelAndView helloWorld(HttpServletRequest request, HttpServletResponse response,@Valid @ModelAttribute Login login, BindingResult result){
-		
-		if(result.hasErrors()){
+		if(result.hasErrors())
 			return new ModelAndView("index").addObject("message", result.getFieldError().getDefaultMessage());
-		}
 		if(!login.getName().startsWith("user"))
 			return new ModelAndView("index").addObject("message", "Invalid User name or Password");
 		request.getSession().setAttribute("name",login.getName());
-		ModelAndView model = new ModelAndView("hellopage");
-		return model;
+		return new ModelAndView("hellopage");
 	}
 	
 	@RequestMapping(value="/detail", method=RequestMethod.GET)
